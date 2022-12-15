@@ -9,7 +9,7 @@ with open("requirements.txt", "r", encoding="utf-8") as fp:
 setuptools.setup(
     name="monkeys_are_working",
     version="0.0.1",
-    author="Romeo Lanzin",
+    author="Romeo Lanzino",
     author_email="romeo.lanzino@gmail.com",
     description='Testing installation of Package',
     long_description=long_description,
