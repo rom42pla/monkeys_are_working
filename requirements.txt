@@ -10,4 +10,4 @@ torchaudio==0.13.0
 
 pandas==1.5.2
 
-opencv-python==4.6.0
+opencv-python==4.6.0.66
