@@ -20,7 +20,10 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/rom42pla/monkeys_are_working",
     license="MIT",
-    packages=setuptools.find_packages(),
+    packages=setuptools.find_packages(
+        where="monkeys_are_working",
+        exclude="*.test*",
+    ),
     install_requires=[
         "joblib==1.2.0",
         "icecream==2.1.3",
