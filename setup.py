@@ -20,7 +20,5 @@ setuptools.setup(
     url="https://github.com/rom42pla/monkeys_are_working",
     license="MIT",
     packages=setuptools.find_packages(),
-    package_dir={"": "monkeys_are_working/"},
-    # py_modules=[splitext(basename(path))[0] for path in glob("monkeys_are_working/*.py")],
     install_requires=requirements,
 )
