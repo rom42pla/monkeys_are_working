@@ -22,7 +22,6 @@ setuptools.setup(
     license="MIT",
     packages=setuptools.find_packages(
         where="monkeys_are_working",
-        exclude="*.test*",
     ),
     install_requires=[
         "joblib==1.2.0",
