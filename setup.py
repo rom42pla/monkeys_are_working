@@ -8,7 +8,7 @@ with open("requirements.txt", "r", encoding="utf-8") as fp:
 
 setuptools.setup(
     name="monkeys_are_working",
-    version="0.0.2",
+    version="0.0.1",
     author="Romeo Lanzino",
     author_email="romeo.lanzino@gmail.com",
     description='Testing installation of Package',
@@ -16,6 +16,6 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/rom42pla/monkeys_are_working",
     license="MIT",
-    packages=["monkeys_are_working"],
+    packages=setuptools.find_packages(),
     install_requires=requirements
 )
