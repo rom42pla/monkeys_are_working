@@ -1,0 +1,14 @@
+README.md
+pyproject.toml
+setup.py
+monkeys_are_working/__init__.py
+monkeys_are_working.egg-info/PKG-INFO
+monkeys_are_working.egg-info/SOURCES.txt
+monkeys_are_working.egg-info/dependency_links.txt
+monkeys_are_working.egg-info/requires.txt
+monkeys_are_working.egg-info/top_level.txt
+monkeys_are_working/datasets/__init__.py
+monkeys_are_working/datasets/common.py
+monkeys_are_working/datasets/style_transfer/__init__.py
+monkeys_are_working/datasets/style_transfer/base.py
+monkeys_are_working/datasets/style_transfer/horse2zebra.py
