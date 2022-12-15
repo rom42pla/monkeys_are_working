@@ -1,25 +1,26 @@
 from abc import abstractmethod
 from os.path import isdir
+
+import torch
+
+from os.path import join, exists
 from typing import List, Dict
 
 import pandas as pd
-import torch
+from icecream import ic
+# import os, sys
 
-import os, sys
+# sys.path.append(os.path.dirname(
+#     os.path.dirname(os.path.realpath(__file__))
+# ))
 
-sys.path.append(os.path.dirname(
-    os.path.dirname(os.path.realpath(__file__))
-))
-
-from common import read_image
+from .common import read_image
 
 from torch.utils.data import Dataset
 import torchvision.transforms as T
 
-from tqdm import tqdm
 
-
-class StyleTransferDataset(Dataset):
+class _StyleTransferDataset(Dataset):
 
     def __init__(
             self,
@@ -64,3 +65,37 @@ class StyleTransferDataset(Dataset):
     @abstractmethod
     def _parse_metas(self) -> pd.DataFrame:
         pass
+
+
+class Horse2ZebraDataset(_StyleTransferDataset):
+
+    def __init__(self, split: str, **kwargs):
+        assert split in {"train", "test"}
+        super().__init__(
+            split=split,
+            **kwargs
+        )
+
+    def _parse_metas(self):
+        dataset_metadata = pd.read_csv(join(self.path, "metadata.csv"))
+        metas: List[Dict[str, str]] = [
+            {
+                "path": join(self.path, image_path),
+                "style": "zebra" if "Zebra" in style else "horse",
+            }
+            for image_path, style, split in zip(dataset_metadata["image_path"],
+                                                dataset_metadata["domain"],
+                                                dataset_metadata["split"])
+            if split == self.split and exists(join(self.path, image_path))
+        ]
+        metas_df = pd.DataFrame(metas)
+        return metas_df
+
+
+if __name__ == "__main__":
+    for split in {"test", "train"}:
+        dataset = Horse2ZebraDataset(
+            path=join("..", "..", "..", "datasets", "vision", "horse2zebra"),
+            split=split,
+        )
+    ic(len(dataset), dataset.styles)
