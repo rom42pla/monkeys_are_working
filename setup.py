@@ -7,7 +7,7 @@ with open("requirements.txt", "r", encoding="utf-8") as fp:
     requirements = [s for s in fp.read().split("\n") if s]
 
 setuptools.setup(
-    name="monkeys_are_working",
+    name="src",
     version="0.0.1",
     author="Romeo Lanzino",
     author_email="romeo.lanzino@gmail.com",
@@ -16,6 +16,7 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/rom42pla/monkeys_are_working",
     license="MIT",
-    packages=setuptools.find_packages(),
-    install_requires=requirements
+    packages=setuptools.find_packages("src/"),
+    package_dir={"": "src/"},
+    install_requires=requirements,
 )
